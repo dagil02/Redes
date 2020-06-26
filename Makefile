@@ -2,7 +2,7 @@ CC=g++
 CFLAGS=-g -I.
 DEPS = ball.h game.h paddle.h
 OBJ = ball.o game.o paddle.o
-LIBS=-lpthread -lm -lX11 -std=c++11 -lSDL2 -lSDL2_image -lSDL2_gfx
+LIBS=-lpthread -lm -lX11 -std=c++11 -lSDL2 -lSDL2_image
 SDL = `sdl-config --cflags --libs sdl2`
 
 %.o: %.cc $(DEPS)
@@ -10,7 +10,7 @@ SDL = `sdl-config --cflags --libs sdl2`
 
 all: pong
 
-pong: $(OBJ) pong.o
+pong: $(OBJ) main.o
 	g++ -o $@ $^ $(CFLAGS) $(LIBS)
 
 .PHONY: clean
